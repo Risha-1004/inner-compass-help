@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Fraunces";
+    --font-body: "General Sans";
+    --font-mono: "JetBrains Mono";
+    --radius: 0.625rem;
+
+    /* Cloud theme (default) - soft, airy, calming */
+    --background: 0.98 0.01 220;
+    --foreground: 0.2 0.02 240;
+    --card: 0.99 0.01 220;
+    --card-foreground: 0.2 0.02 240;
+    --popover: 0.99 0.01 220;
+    --popover-foreground: 0.2 0.02 240;
+
+    --primary: 0.65 0.11 270;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.94 0.03 240;
+    --secondary-foreground: 0.3 0.01 240;
+    --muted: 0.92 0.02 240;
+    --muted-foreground: 0.5 0.01 240;
+
+    --accent: 0.72 0.15 240;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.94 0.02 240;
+    --input: 0.94 0.02 240;
+    --ring: 0.65 0.11 270;
+
+    --chart-1: 0.68 0.18 45;
+    --chart-2: 0.62 0.15 240;
+    --chart-3: 0.55 0.12 180;
+    --chart-4: 0.75 0.14 50;
+    --chart-5: 0.7 0.16 270;
+
+    --sidebar: 0.97 0.01 220;
+    --sidebar-foreground: 0.2 0.02 240;
+    --sidebar-primary: 0.65 0.11 270;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.88 0.04 240;
+    --sidebar-accent-foreground: 0.3 0.01 240;
+    --sidebar-border: 0.94 0.02 240;
+    --sidebar-ring: 0.65 0.11 270;
+  }
+
+  /* Ocean theme - deep, grounding, trustworthy */
+  .theme-ocean {
+    --background: 0.15 0.02 240;
+    --foreground: 0.93 0.02 240;
+    --card: 0.18 0.02 240;
+    --card-foreground: 0.93 0.02 240;
+    --popover: 0.22 0.03 240;
+    --popover-foreground: 0.93 0.02 240;
+
+    --primary: 0.55 0.16 270;
+    --primary-foreground: 0.95 0 0;
+
+    --secondary: 0.22 0.02 240;
+    --secondary-foreground: 0.85 0.01 240;
+    --muted: 0.22 0.02 240;
+    --muted-foreground: 0.55 0.01 240;
+
+    --accent: 0.72 0.18 190;
+    --accent-foreground: 0.15 0.02 240;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.95 0 0;
+
+    --border: 0.28 0.02 240;
+    --input: 0.28 0.02 240;
+    --ring: 0.72 0.18 190;
+
+    --chart-1: 0.7 0.18 45;
+    --chart-2: 0.65 0.16 270;
+    --chart-3: 0.68 0.15 190;
+    --chart-4: 0.75 0.17 50;
+    --chart-5: 0.62 0.14 270;
+
+    --sidebar: 0.18 0.02 240;
+    --sidebar-foreground: 0.93 0.02 240;
+    --sidebar-primary: 0.72 0.18 190;
+    --sidebar-primary-foreground: 0.15 0.02 240;
+    --sidebar-accent: 0.28 0.02 240;
+    --sidebar-accent-foreground: 0.85 0.01 240;
+    --sidebar-border: 0.28 0.02 240;
+    --sidebar-ring: 0.72 0.18 190;
+  }
+
+  /* Sunset theme - warm, energizing, hopeful */
+  .theme-sunset {
+    --background: 0.97 0.02 45;
+    --foreground: 0.25 0.01 50;
+    --card: 0.98 0.02 45;
+    --card-foreground: 0.25 0.01 50;
+    --popover: 0.99 0.02 45;
+    --popover-foreground: 0.25 0.01 50;
+
+    --primary: 0.75 0.18 25;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.92 0.03 45;
+    --secondary-foreground: 0.35 0.01 50;
+    --muted: 0.9 0.02 45;
+    --muted-foreground: 0.55 0.01 50;
+
+    --accent: 0.72 0.16 35;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.6 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.92 0.03 45;
+    --input: 0.92 0.03 45;
+    --ring: 0.75 0.18 25;
+
+    --chart-1: 0.72 0.16 35;
+    --chart-2: 0.68 0.15 45;
+    --chart-3: 0.65 0.12 10;
+    --chart-4: 0.8 0.14 50;
+    --chart-5: 0.75 0.18 25;
+
+    --sidebar: 0.96 0.02 45;
+    --sidebar-foreground: 0.25 0.01 50;
+    --sidebar-primary: 0.75 0.18 25;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.88 0.03 45;
+    --sidebar-accent-foreground: 0.35 0.01 50;
+    --sidebar-border: 0.92 0.03 45;
+    --sidebar-ring: 0.75 0.18 25;
+  }
+
+  /* Night theme - deep, calm, restful */
+  .theme-night {
+    --background: 0.12 0.01 260;
+    --foreground: 0.92 0.01 260;
+    --card: 0.16 0.01 260;
+    --card-foreground: 0.92 0.01 260;
+    --popover: 0.2 0.02 260;
+    --popover-foreground: 0.92 0.01 260;
+
+    --primary: 0.68 0.14 270;
+    --primary-foreground: 0.95 0 0;
+
+    --secondary: 0.2 0.01 260;
+    --secondary-foreground: 0.8 0.01 260;
+    --muted: 0.2 0.01 260;
+    --muted-foreground: 0.5 0.01 260;
+
+    --accent: 0.72 0.16 270;
+    --accent-foreground: 0.12 0.01 260;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.95 0 0;
+
+    --border: 0.26 0.01 260;
+    --input: 0.26 0.01 260;
+    --ring: 0.72 0.16 270;
+
+    --chart-1: 0.7 0.18 45;
+    --chart-2: 0.68 0.15 270;
+    --chart-3: 0.65 0.12 180;
+    --chart-4: 0.75 0.17 50;
+    --chart-5: 0.72 0.16 270;
+
+    --sidebar: 0.16 0.01 260;
+    --sidebar-foreground: 0.92 0.01 260;
+    --sidebar-primary: 0.72 0.16 270;
+    --sidebar-primary-foreground: 0.12 0.01 260;
+    --sidebar-accent: 0.24 0.01 260;
+    --sidebar-accent-foreground: 0.8 0.01 260;
+    --sidebar-border: 0.26 0.01 260;
+    --sidebar-ring: 0.72 0.16 270;
+  }
+
+  /* High contrast override */
+  .high-contrast {
+    --foreground: 0.05 0 0;
+    --primary: 0.35 0.15 270;
+    --accent: 0.4 0.2 35;
+    --border: 0.5 0.03 240;
+  }
+
+  .high-contrast.theme-ocean {
+    --foreground: 0.95 0.02 240;
+    --primary: 0.72 0.18 190;
+    --accent: 0.72 0.18 190;
+  }
+
+  .high-contrast.theme-sunset {
+    --foreground: 0.15 0.01 50;
+    --primary: 0.85 0.22 25;
+    --accent: 0.85 0.22 25;
+  }
+
+  .high-contrast.theme-night {
+    --foreground: 0.95 0.01 260;
+    --primary: 0.78 0.18 270;
+    --accent: 0.78 0.18 270;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Font size scale */
+  .font-sm {
+    @apply text-sm;
+  }
+
+  .font-base {
+    @apply text-base;
+  }
+
+  .font-lg {
+    @apply text-lg;
+  }
+
+  /* Accessibility: font size controls */
+  :root.text-size-small {
+    font-size: 14px;
+  }
+
+  :root.text-size-default {
+    font-size: 16px;
+  }
+
+  :root.text-size-large {
+    font-size: 18px;
+  }
+
+  /* Font size preview helpers */
+  .preview-size-sm {
+    font-size: 0.875rem;
+  }
+
+  .preview-size-base {
+    font-size: 1rem;
+  }
+
+  .preview-size-lg {
+    font-size: 1.15rem;
+  }
+
+  .preview-live-sm {
+    font-size: 0.8rem;
+  }
+
+  .preview-live-base {
+    font-size: 1rem;
+  }
+
+  .preview-live-lg {
+    font-size: 1.1rem;
+  }
+
+  /* Soft shadow system */
+  .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+}

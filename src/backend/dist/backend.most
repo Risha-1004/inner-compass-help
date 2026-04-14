@@ -1,0 +1,204 @@
+// Version: 1.0.0
+type CycleLog__110550890 =
+  {
+    createdAt : Int;
+    endDate : ?Text;
+    flowIntensity : Text;
+    id : Nat;
+    startDate : Text
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type FontSize__831937795 = {#base; #lg; #sm};
+type GoalStatus__799511032 = {#abandoned; #active; #completed};
+type Goal__523053841 =
+  {
+    createdAt : Int;
+    description : Text;
+    id : Nat;
+    progress : Nat;
+    status : GoalStatus__799511032;
+    targetDate : ?Text;
+    title : Text;
+    updatedAt : Int
+  };
+type HabitCompletion__26337300 =
+  {completed : Bool; date : Text; habitId : Nat};
+type Habit__997482226 =
+  {
+    color : Text;
+    createdAt : Int;
+    icon : Text;
+    id : Nat;
+    isArchived : Bool;
+    name : Text
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type JournalEntry__526826330 =
+  {
+    content : Text;
+    createdAt : Int;
+    date : Text;
+    entryType : JournalType__259558088;
+    id : Nat;
+    tags : [Text];
+    title : Text;
+    updatedAt : Int
+  };
+type JournalType__259558088 = {#gratitude; #regular};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type MoodEntry__676014845 =
+  {
+    createdAt : Int;
+    date : Text;
+    emoji : Text;
+    id : Nat;
+    note : ?Text;
+    score : Nat
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type OnboardingData__1054981381 = {completed : Bool; hasPeriods : ?Bool};
+type ProfessionalContact__581678517 =
+  {name : Text; phone : Text; role : Text};
+type QuizResult__84614529 =
+  {
+    answers : [Text];
+    createdAt : Int;
+    date : Text;
+    id : Nat;
+    quizId : Text;
+    score : Nat
+  };
+type SafetyPlan__558269965 =
+  {
+    copingStrategies : [Text];
+    professionalContacts : [ProfessionalContact__581678517];
+    reasonsToLive : [Text];
+    safeEnvironmentNotes : Text;
+    supportContacts : [SupportContact__1002185824];
+    updatedAt : Int;
+    userId : Principal;
+    warningSigns : [Text]
+  };
+type SleepLog__767402696 =
+  {
+    bedtime : Text;
+    createdAt : Int;
+    date : Text;
+    id : Nat;
+    notes : ?Text;
+    quality : Nat;
+    wakeTime : Text
+  };
+type SupportContact__1002185824 =
+  {name : Text; phone : Text; relation : Text};
+type SymptomsLog__571155527 =
+  {createdAt : Int; date : Text; id : Nat; symptoms : [Text]};
+type Theme__781247606 = {#cloud; #night; #ocean; #sunset};
+type UserPreferences__860597491 =
+  {
+    fontSize : FontSize__831937795;
+    highContrast : Bool;
+    theme : Theme__781247606
+  };
+type UserProfile__446616884 =
+  {
+    createdAt : Int;
+    onboarding : OnboardingData__1054981381;
+    preferences : UserPreferences__860597491;
+    userId : Principal
+  };
+type WaterIntakeEntry__373991233 =
+  {amountMl : Nat; date : Text; id : Nat; loggedAt : Int};
+actor {
+  stable cycleLogs :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<CycleLog__110550890>>;
+      var size : Nat__490723111
+    };
+  stable var cycleNextId : Nat;
+  stable var goalNextId : Nat;
+  stable goals :
+    {
+      var root : Node__46230540<Principal, List__415060402<Goal__523053841>>;
+      var size : Nat__490723111
+    };
+  stable habitCompletions :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<HabitCompletion__26337300>>;
+      var size : Nat__490723111
+    };
+  stable var habitNextId : Nat;
+  stable habits :
+    {
+      var root : Node__46230540<Principal, List__415060402<Habit__997482226>>;
+      var size : Nat__490723111
+    };
+  stable var journalNextId : Nat;
+  stable journals :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<JournalEntry__526826330>>;
+      var size : Nat__490723111
+    };
+  stable moodLogs :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<MoodEntry__676014845>>;
+      var size : Nat__490723111
+    };
+  stable var moodNextId : Nat;
+  stable profiles :
+    {
+      var root : Node__46230540<Principal, UserProfile__446616884>;
+      var size : Nat__490723111
+    };
+  stable var quizNextId : Nat;
+  stable quizResults :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<QuizResult__84614529>>;
+      var size : Nat__490723111
+    };
+  stable safetyPlans :
+    {
+      var root : Node__46230540<Principal, SafetyPlan__558269965>;
+      var size : Nat__490723111
+    };
+  stable sleepLogs :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<SleepLog__767402696>>;
+      var size : Nat__490723111
+    };
+  stable var sleepNextId : Nat;
+  stable symptomsLogs :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<SymptomsLog__571155527>>;
+      var size : Nat__490723111
+    };
+  stable waterGoals :
+    {var root : Node__46230540<Principal, Nat>; var size : Nat__490723111};
+  stable waterLogs :
+    {
+      var root :
+        Node__46230540<Principal,
+                        List__415060402<WaterIntakeEntry__373991233>>;
+      var size : Nat__490723111
+    };
+  stable var waterNextId : Nat
+};

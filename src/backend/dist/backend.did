@@ -1,0 +1,299 @@
+type WaterIntakeEntry = 
+ record {
+   amountMl: nat;
+   date: text;
+   id: nat;
+   loggedAt: int;
+ };
+type UserProfile = 
+ record {
+   createdAt: int;
+   onboarding: OnboardingData;
+   preferences: UserPreferences;
+   userId: principal;
+ };
+type UserPreferences = 
+ record {
+   fontSize: FontSize;
+   highContrast: bool;
+   theme: Theme;
+ };
+type Theme = 
+ variant {
+   cloud;
+   night;
+   ocean;
+   sunset;
+ };
+type SymptomsLog = 
+ record {
+   createdAt: int;
+   date: text;
+   id: nat;
+   symptoms: vec text;
+ };
+type SupportContact = 
+ record {
+   name: text;
+   phone: text;
+   relation: text;
+ };
+type SleepLog = 
+ record {
+   bedtime: text;
+   createdAt: int;
+   date: text;
+   id: nat;
+   notes: opt text;
+   quality: nat;
+   wakeTime: text;
+ };
+type SafetyPlan = 
+ record {
+   copingStrategies: vec text;
+   professionalContacts: vec ProfessionalContact;
+   reasonsToLive: vec text;
+   safeEnvironmentNotes: text;
+   supportContacts: vec SupportContact;
+   updatedAt: int;
+   userId: principal;
+   warningSigns: vec text;
+ };
+type Result_9 = 
+ variant {
+   err: AppError;
+   ok;
+ };
+type Result_8 = 
+ variant {
+   err: AppError;
+   ok: MoodEntry;
+ };
+type Result_7 = 
+ variant {
+   err: AppError;
+   ok: QuizResult;
+ };
+type Result_6 = 
+ variant {
+   err: AppError;
+   ok: HabitCompletion;
+ };
+type Result_5 = 
+ variant {
+   err: AppError;
+   ok: CycleLog;
+ };
+type Result_4 = 
+ variant {
+   err: AppError;
+   ok: Goal;
+ };
+type Result_3 = 
+ variant {
+   err: AppError;
+   ok: JournalEntry;
+ };
+type Result_2 = 
+ variant {
+   err: AppError;
+   ok: UserProfile;
+ };
+type Result_12 = 
+ variant {
+   err: AppError;
+   ok: SymptomsLog;
+ };
+type Result_11 = 
+ variant {
+   err: AppError;
+   ok: WaterIntakeEntry;
+ };
+type Result_10 = 
+ variant {
+   err: AppError;
+   ok: Habit;
+ };
+type Result_1 = 
+ variant {
+   err: AppError;
+   ok: SleepLog;
+ };
+type Result = 
+ variant {
+   err: AppError;
+   ok: SafetyPlan;
+ };
+type QuizResult = 
+ record {
+   answers: vec text;
+   createdAt: int;
+   date: text;
+   id: nat;
+   quizId: text;
+   score: nat;
+ };
+type ProfessionalContact = 
+ record {
+   name: text;
+   phone: text;
+   role: text;
+ };
+type OnboardingData = 
+ record {
+   completed: bool;
+   hasPeriods: opt bool;
+ };
+type MoodEntry = 
+ record {
+   createdAt: int;
+   date: text;
+   emoji: text;
+   id: nat;
+   note: opt text;
+   score: nat;
+ };
+type JournalType = 
+ variant {
+   gratitude;
+   regular;
+ };
+type JournalEntry = 
+ record {
+   content: text;
+   createdAt: int;
+   date: text;
+   entryType: JournalType;
+   id: nat;
+   tags: vec text;
+   title: text;
+   updatedAt: int;
+ };
+type HabitStreak = 
+ record {
+   currentStreak: nat;
+   habitId: nat;
+   longestStreak: nat;
+ };
+type HabitCompletion = 
+ record {
+   completed: bool;
+   date: text;
+   habitId: nat;
+ };
+type Habit = 
+ record {
+   color: text;
+   createdAt: int;
+   icon: text;
+   id: nat;
+   isArchived: bool;
+   name: text;
+ };
+type GoalStatus = 
+ variant {
+   abandoned;
+   active;
+   completed;
+ };
+type Goal = 
+ record {
+   createdAt: int;
+   description: text;
+   id: nat;
+   progress: nat;
+   status: GoalStatus;
+   targetDate: opt text;
+   title: text;
+   updatedAt: int;
+ };
+type FontSize = 
+ variant {
+   base;
+   lg;
+   sm;
+ };
+type DailyWaterLog = 
+ record {
+   date: text;
+   entries: vec WaterIntakeEntry;
+   goalMl: nat;
+   totalMl: nat;
+ };
+type CycleLog = 
+ record {
+   createdAt: int;
+   endDate: opt text;
+   flowIntensity: text;
+   id: nat;
+   startDate: text;
+ };
+type AppError = 
+ variant {
+   alreadyExists;
+   invalidInput: text;
+   notFound;
+   unauthorized;
+ };
+service : {
+  addCycleLog: (startDate: text, endDate: opt text, flowIntensity: text) ->
+   (Result_5);
+  addSymptomsLog: (date: text, symptoms: vec text) -> (Result_12);
+  addWaterIntake: (date: text, amountMl: nat) -> (Result_11);
+  archiveHabit: (habitId: nat) -> (Result_9);
+  completeOnboarding: (hasPeriods: bool) -> (Result_2);
+  createGoal: (title: text, description: text, targetDate: opt text) ->
+   (Result_4);
+  createHabit: (name: text, color: text, icon: text) -> (Result_10);
+  createJournalEntry: (date: text, title: text, content: text, entryType:
+   text, tags: vec text) -> (Result_3);
+  deleteCycleLog: (logId: nat) -> (Result_9);
+  deleteGoal: (goalId: nat) -> (Result_9);
+  deleteHabit: (habitId: nat) -> (Result_9);
+  deleteJournalEntry: (entryId: nat) -> (Result_9);
+  deleteMoodEntry: (entryId: nat) -> (Result_9);
+  deleteQuizResult: (resultId: nat) -> (Result_9);
+  deleteSafetyPlan: () -> (Result_9);
+  deleteSleepLog: (logId: nat) -> (Result_9);
+  deleteSymptomsLog: (logId: nat) -> (Result_9);
+  deleteWaterEntry: (entryId: nat) -> (Result_9);
+  getCycleLogs: () -> (vec CycleLog) query;
+  getDailyAffirmation: (dayOfYear: nat) -> (text) query;
+  getDailyWaterLog: (date: text) -> (DailyWaterLog) query;
+  getGoals: (status: opt text) -> (vec Goal) query;
+  getHabitCompletions: (fromDate: text, toDate: text) ->
+   (vec HabitCompletion) query;
+  getHabitStreak: (habitId: nat, today: text) -> (HabitStreak) query;
+  getHabits: () -> (vec Habit) query;
+  getJournalEntries: (entryType: opt text) -> (vec JournalEntry) query;
+  getJournalEntry: (entryId: nat) -> (opt JournalEntry) query;
+  getMoodEntries: (fromDate: text, toDate: text) -> (vec MoodEntry) query;
+  getMyProfile: () -> (opt UserProfile);
+  getQuizResults: (quizId: opt text) -> (vec QuizResult) query;
+  getSafetyPlan: () -> (opt SafetyPlan) query;
+  getSleepLogs: (fromDate: text, toDate: text) -> (vec SleepLog) query;
+  getSymptomsLogs: () -> (vec SymptomsLog) query;
+  logMood: (date: text, emoji: text, score: nat, note: opt text) ->
+   (Result_8);
+  logSleep: (date: text, bedtime: text, wakeTime: text, quality: nat, notes:
+   opt text) -> (Result_1);
+  saveQuizResult: (quizId: text, date: text, score: nat, answers:
+   vec text) -> (Result_7);
+  setHabitCompletion: (habitId: nat, date: text, completed: bool) ->
+   (Result_6);
+  setWaterGoal: (goalMl: nat) -> ();
+  updateCycleLog: (logId: nat, endDate: opt text, flowIntensity: opt text) ->
+   (Result_5);
+  updateGoal: (goalId: nat, title: opt text, description: opt text,
+   targetDate: opt text, status: opt text, progress: opt nat) -> (Result_4);
+  updateJournalEntry: (entryId: nat, title: opt text, content: opt text,
+   tags: opt vec text) -> (Result_3);
+  updatePreferences: (theme: text, fontSize: text, highContrast: bool) ->
+   (Result_2);
+  updateSleepLog: (logId: nat, bedtime: opt text, wakeTime: opt text,
+   quality: opt nat, notes: opt text) -> (Result_1);
+  upsertSafetyPlan: (reasonsToLive: vec text, warningSigns: vec text,
+   copingStrategies: vec text, supportContacts: vec SupportContact,
+   professionalContacts: vec ProfessionalContact, safeEnvironmentNotes:
+   text) -> (Result);
+}

@@ -1,0 +1,34 @@
+{
+  "overview": "Inner Compass Help is a comprehensive, globally accessible wellness platform supporting individuals with physical and mental health challenges. It offers journaling, mood and habit tracking, cycle tracking with inclusive onboarding, sleep and water tracking, goal setting, breathing exercises, self-assessment tools, emergency safety planning, and a rich resources library — all behind secure Internet Identity login with customizable themes and full accessibility controls.",
+  "features": [
+    "Internet Identity login with user accounts synced across devices",
+    "Inclusive onboarding that asks about periods before showing the cycle tracker",
+    "Dashboard with daily affirmations and theme switcher (cloud, ocean, sunset, night)",
+    "Mood tracking with emoji/score and charts",
+    "Habit tracking with streaks and milestone rewards",
+    "Cycle tracker for users who opt in",
+    "Journaling with gratitude journal tab",
+    "Goal setting",
+    "Sleep and water intake trackers",
+    "Guided breathing exercises (box breathing, 4-7-8)",
+    "Meditation and yoga curated links",
+    "Self-assessment quizzes",
+    "Emergency safety plan builder",
+    "Resources page with global crisis hotlines",
+    "Contact page",
+    "Font size controls and high contrast accessibility modes"
+  ],
+  "category": "health-wellness",
+  "tags": [
+    "wellness",
+    "mental-health",
+    "journaling",
+    "habit-tracking",
+    "mood-tracking",
+    "accessibility",
+    "internet-identity",
+    "self-care",
+    "mindfulness"
+  ],
+  "last_updated": "2026-04-14T07:49:23.763Z"
+}
